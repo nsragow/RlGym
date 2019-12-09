@@ -16,6 +16,7 @@ def random_policy_list(env,random_policy_count = 1000):
 
 if __name__ == "__main__":
     env = gym.make("FrozenLake-v0")
+    #env = gym.make("Blackjack-v0")
     policies = random_policy_list(env,10000)
     best_performer = None
     best_performance = -1
