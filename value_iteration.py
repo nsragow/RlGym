@@ -59,25 +59,22 @@ class ValueModel:
 
         for state in range(len(self.states)):
             best_action = 0
-            current_reward = 0
+            top_reward = 0
 
             actions_at_state = self.transition[state]
 
             for action in actions_at_state.keys():  # need to find the max action
-                reward = 0
+                action_reward = 0
                 transitions = actions_at_state[action]
                 # add value for going to all possible states multiplied by the chance to go there
                 for transition in transitions:
-                    chance, new_state, reward, done = transition
-                    reward += chance * (reward + self.states[new_state])
-                if current_reward < reward:
-                    current_reward = reward
+                    chance, new_state, transition_reward, done = transition
+                    action_reward += chance * (transition_reward + self.states[new_state])
+                if top_reward < action_reward:
+                    top_reward = action_reward
                     best_action = action
             policy[state] = best_action
         return policy
-
-
-
 
 
 if __name__ == "__main__":
