@@ -23,8 +23,10 @@ def evaluate_policy(env, policy, max_steps=1000, evaluations=100, render=False):
 if __name__ == "__main__":
     import gym
 
-    policy = [0, 3, 2, 2, 0, 0, 0, 1, 3, 1, 1, 1, 3, 3, 1, 1]
+    policy_genetic = [0, 3, 2, 2, 0, 0, 0, 1, 3, 1, 1, 1, 3, 3, 1, 1]
+
+    policy_value_iteration = [0, 1, 0, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0]
 
     env = gym.make("FrozenLake-v0")
 
-    evaluate_policy(env, policy, evaluations=100, render=True)
+    print(evaluate_policy(env, policy_value_iteration, evaluations=100, render=True))
