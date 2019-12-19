@@ -1,4 +1,4 @@
-if __name__ == '__main___':
+if __name__ == '__main__':
     import sys
     import pickle
     file = open(sys.argv[1], 'rb')
