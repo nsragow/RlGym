@@ -26,7 +26,7 @@ class QLearner:
         self.lr = lr
         self.gamma = gamma  # also know as discount rate
 
-    def step(self, epsilon=.3, learning=True):
+    def step(self, epsilon=.1, learning=True):
         """
         Take step in simulation and update Q values
 
@@ -37,7 +37,7 @@ class QLearner:
             reward - reward received from step
             done - True if simulation ended
         """
-        exploring = random.uniform() > epsilon
+        exploring = random.uniform() < epsilon
         if learning and exploring:
             action = random.randint(0, self.action_range - 1)
         else:  # exploiting
@@ -70,7 +70,8 @@ class QLearner:
 
         return action
 
-    def learn(self, steps=1000):
+    def learn(self, steps=1000, lr=.1):
+        self.lr = lr
         while steps > 0:
             steps -= 1
             self.step(learning=True)
