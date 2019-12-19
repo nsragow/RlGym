@@ -17,7 +17,8 @@ class QLearner:
     def __init__(self, env, lr=.3, gamma=.8):
         # Current implementation assumes Frozen-lake env
         self.env = env
-        self.state = env.reset()
+        self.state = None
+        self.reset()
         self.state_range = len(env.env.P.keys())
         self.action_range = len(env.env.P[0].keys())
         # Make Q matrix of shape states,actions
@@ -25,7 +26,7 @@ class QLearner:
         self.lr = lr
         self.gamma = gamma  # also know as discount rate
 
-    def step(self, epsilon=.2, learning=True):
+    def step(self, epsilon=.3, learning=True):
         """
         Take step in simulation and update Q values
 
@@ -47,7 +48,7 @@ class QLearner:
         if learning:
             self.update_q(prev_state, action, reward, self.lr)
         if done:
-            self.state = self.env.reset()
+            self.reset()
         return reward, done
 
     def update_q(self, previous_state, action_taken, reward, lr):
@@ -68,3 +69,17 @@ class QLearner:
                 highest_quality = ret_quality
 
         return action
+
+    def learn(self, steps=1000):
+        while steps > 0:
+            steps -= 1
+            self.step(learning=True)
+        self.reset()
+
+    def reset(self):
+        """
+        Reset to the beginning of env simulation
+        """
+        self.state = self.env.reset()
+
+
