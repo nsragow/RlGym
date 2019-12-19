@@ -83,3 +83,12 @@ class QLearner:
         self.state = self.env.reset()
 
 
+if __name__ == '__main__':
+    import pickle
+    import gym
+
+    env = gym.make("FrozenLake-v0")
+    actor = QLearner(env)
+    actor.learn()
+    file = open("./pickles/q_learner.pkl",'w+')
+    pickle.dump(actor, file)
