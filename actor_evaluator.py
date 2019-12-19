@@ -20,6 +20,7 @@ def evaluate_actor(actor, max_steps=1000, evaluations=100, render=False):
 
 if __name__ == "__main__":
     import pickle
+    from q_learning import QLearner
     file = open("./pickles/q_learner.pkl", 'rb')
     actor = pickle.load(file)
     print(f'score: {evaluate_actor(actor)}')

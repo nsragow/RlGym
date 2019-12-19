@@ -10,7 +10,7 @@ This is a q learning implementation of the TD(0) algorithm.
 """
 
 import numpy as np
-import random
+import numpy.random as random
 
 
 class QLearner:
@@ -22,7 +22,7 @@ class QLearner:
         self.state_range = len(env.env.P.keys())
         self.action_range = len(env.env.P[0].keys())
         # Make Q matrix of shape states,actions
-        self.Q = np.zeroes((self.state_range,self.action_range))
+        self.Q = np.zeros((self.state_range,self.action_range))
         self.lr = lr
         self.gamma = gamma  # also know as discount rate
 
