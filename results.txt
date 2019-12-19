@@ -1,3 +1,6 @@
+parameters:
+    max_steps = 1000
+    evaluations = 100
 genetic
     policy
         [0, 3, 2, 2, 0, 0, 0, 1, 3, 1, 1, 1, 3, 3, 1, 1]
