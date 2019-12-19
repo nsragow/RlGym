@@ -90,5 +90,5 @@ if __name__ == '__main__':
     env = gym.make("FrozenLake-v0")
     actor = QLearner(env)
     actor.learn()
-    file = open("./pickles/q_learner.pkl",'w+')
+    file = open("./pickles/q_learner.pkl", 'wb+')
     pickle.dump(actor, file)
