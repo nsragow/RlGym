@@ -13,7 +13,9 @@ def evaluate_actor(actor, max_steps=1000, evaluations=100, render=False):
             reward += step_reward
             step_count += 1
             if render:
+                input("next step")
                 actor.env.render()
+
         score += reward
     return score
 
@@ -23,4 +25,4 @@ if __name__ == "__main__":
     from q_learning import QLearner
     file = open("./pickles/q_learner.pkl", 'rb')
     actor = pickle.load(file)
-    print(f'score: {evaluate_actor(actor)}')
+    print(f'score: {evaluate_actor(actor, render=True)}')
