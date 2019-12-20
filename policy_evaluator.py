@@ -27,6 +27,8 @@ if __name__ == "__main__":
 
     policy_value_iteration = [0, 3, 0, 3, 0, 0, 0, 0, 3, 1, 0, 0, 0, 2, 1, 0]
 
+    policy_other_q = [1, 3, 3, 0, 1, 0, 2, 0, 3, 2, 0, 0, 0, 2, 2, 0]
+
     env = gym.make("FrozenLake-v0")
 
-    print(evaluate_policy(env, policy_value_iteration, evaluations=100, render=False))
+    print(evaluate_policy(env, policy_other_q, evaluations=100, render=False))
