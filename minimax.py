@@ -17,3 +17,10 @@ class Node:
     def value(self):
         return self._value
 
+def create_minimax_game():
+    root = Node()
+    left = Node()
+    right = Node()
+
+
+    return root
