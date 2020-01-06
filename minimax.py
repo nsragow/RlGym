@@ -10,7 +10,7 @@ class Node:
         for child in children:
             self.children.append(child)
 
-    @property
+    @property.setter
     def value(self, val):
         self._value = val
 
@@ -29,3 +29,18 @@ def create_minimax_game():
     right.set_children(Node(val=3), Node(val=5))
 
     return root
+
+
+def minimax(node, is_player1):
+    if node.children[0].value is not None:
+        if is_player1:
+            return max(map(lambda som_node: som_node.value, node.children))
+        else:
+            return min(map(lambda som_node: som_node.value, node.children))
+    else:
+        if is_player1:
+            return max(map(lambda som_node: minimax(som_node, not is_player1)))
+        else:
+            return min(map(lambda som_node: minimax(som_node, not is_player1)))
+
+
