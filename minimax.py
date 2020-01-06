@@ -10,13 +10,13 @@ class Node:
         for child in children:
             self.children.append(child)
 
-    @property.setter
-    def value(self, val):
-        self._value = val
-
-    @value.getter
+    @property
     def value(self):
         return self._value
+
+    @value.setter
+    def value(self, val):
+        self._value = val
 
 
 def create_minimax_game():
@@ -39,8 +39,10 @@ def minimax(node, is_player1):
             return min(map(lambda som_node: som_node.value, node.children))
     else:
         if is_player1:
-            return max(map(lambda som_node: minimax(som_node, not is_player1)))
+            return max(map(lambda som_node: minimax(som_node, not is_player1), node.children))
         else:
-            return min(map(lambda som_node: minimax(som_node, not is_player1)))
+            return min(map(lambda som_node: minimax(som_node, not is_player1), node.children))
 
 
+if __name__ == '__main__':
+    print(f'return is {minimax(create_minimax_game(),True)}')
